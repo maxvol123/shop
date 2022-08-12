@@ -1,0 +1,39 @@
+body{
+    font-weight: 900;
+}
+.nav{
+    margin-top: 10%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px 0;
+}
+.item{
+width: 200px;
+height: 200px;
+margin-left: 50px;
+display: flex;
+flex-direction: column;
+margin-bottom: 10px;
+border: 2px solid grey;
+align-items: center;
+}
+.price{
+    color:  green;
+    background-image: url(/img/ASUS.jfif);
+}
+.foto{
+    height: 140px;
+}
+
+.cart{
+position: absolute;
+top: 1%;
+right: 1%;
+height: 40px;
+}
+.cart_menu{
+position: absolute;
+top: 5%;
+right: 1%;
+}
