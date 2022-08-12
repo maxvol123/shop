@@ -51,25 +51,44 @@ sort.addEventListener('change',()=>{
         }
     }
 })
-function addtocart(id) {
-    console.log(document.querySelector('.nav').children[0]);
 
+console.log(localStorage.getItem("a"));
+if (localStorage.getItem("a")==null) {
+    let a=1
+    localStorage.setItem("a",a)
+    console.log(15);
+}
+a=localStorage.getItem("a")
+console.log(a);
+function addtocart(id) {
+    a=localStorage.getItem("a")
+    a = Number(a);
+    let number= id.getAttribute("id")
+    let component= `${document.querySelector('.nav').children[number].children[0].textContent} ` 
     let z = 0
     while (z<length) {
-        console.log(z);
         if (sort.value !=1) {
             document.querySelector('.nav').children[z].setAttribute('id', z)
         }
+        
         z++
     }
 
-    console.log(document.querySelector('.nav').children[0] );
-    let number= id.getAttribute("id")
-    console.log(document.querySelector('.nav').children[number].children[0].textContent);
-    cart_menu.innerHTML+=`${document.querySelector('.nav').children[number].children[0].textContent} `
+    cart_menu.innerHTML+= component
+    console.log(a);     
+    localStorage.setItem(`id${a}`, component)
+    a=a+1
+    localStorage.setItem("a",a)
+    
 }
-
-clear_cart.addEventListener('click',()=>{
-    cart_menu.innerHTML=""
-    console.log(123);
+render()
+function render() {
+    let x = 1
+        while (localStorage.length-1>=x) {
+            cart_menu.innerHTML+=localStorage.getItem(`id${x}`); 
+           x++  
+        }
+}
+clear_cart.addEventListener('click', ()=>{
+    
 })
