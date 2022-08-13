@@ -52,19 +52,12 @@ sort.addEventListener('change',()=>{
     }
 })
 
-console.log(localStorage.getItem("a"));
 if (localStorage.getItem("a")==null) {
     let a=1
     localStorage.setItem("a",a)
-    console.log(15);
 }
 a=localStorage.getItem("a")
-console.log(a);
 function addtocart(id) {
-    a=localStorage.getItem("a")
-    a = Number(a);
-    let number= id.getAttribute("id")
-    let component= `${document.querySelector('.nav').children[number].children[0].textContent} ` 
     let z = 0
     while (z<length) {
         if (sort.value !=1) {
@@ -72,10 +65,13 @@ function addtocart(id) {
         }
         
         z++
-    }
-
+    }   
+    a=localStorage.getItem("a")
+    a = Number(a);
+    let number= id.getAttribute("id")
+    console.log(document.querySelector('.nav').children[number].children[1]);
+    let component= `<div class="cart_item">${document.querySelector('.nav').children[number].children[0].textContent} ` 
     cart_menu.innerHTML+= component
-    console.log(a);     
     localStorage.setItem(`id${a}`, component)
     a=a+1
     localStorage.setItem("a",a)
@@ -89,6 +85,8 @@ function render() {
            x++  
         }
 }
-clear_cart.addEventListener('click', ()=>{
-    
-})
+function clear_function() {
+    localStorage.clear()
+    cart_menu.innerHTML=""
+    cart_menu.innerHTML=`<button class="clear_cart" onclick="clear_function()">clear</button>`
+}
